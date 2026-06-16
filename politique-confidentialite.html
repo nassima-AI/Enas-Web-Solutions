@@ -1,79 +1,128 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Politique de confidentialité — ENAS Solutions</title>
-  <meta name="description" content="Politique de confidentialité du site ENAS Solutions." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="index,follow"/>
+  <title>Politique de confidentialité - Enas digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0f2444;
+      --blue: #2563eb;
+      --pale: #eff6ff;
+      --text: #334155;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: linear-gradient(165deg, #f0f7ff 0%, #ffffff 48%, #f8fafc 100%);
+      line-height: 1.75;
+    }
+    .header {
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+    .container { width: min(960px, calc(100% - 2rem)); margin: 0 auto; }
+    .topbar { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .logo { color: var(--navy); font-size: 1.25rem; font-weight: 800; text-decoration: none; letter-spacing: -0.03em; }
+    .logo span { color: var(--blue); }
+    .back {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 1rem;
+      border-radius: 0.75rem;
+      background: var(--blue);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    main { padding: 4rem 0 5rem; }
+    .label {
+      display: inline-flex;
+      color: var(--blue);
+      background: var(--pale);
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+    h1 { color: var(--navy); font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1rem; }
+    .intro { color: var(--muted); font-size: 1.05rem; margin-bottom: 2rem; max-width: 720px; }
+    .content {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 60px rgba(15,36,68,0.10);
+      padding: clamp(1.25rem, 4vw, 2.25rem);
+    }
+    h2 { color: var(--navy); font-size: 1.35rem; margin: 2rem 0 0.75rem; }
+    h2:first-child { margin-top: 0; }
+    p, li { color: var(--muted); margin-bottom: 0.75rem; }
+    ul { padding-left: 1.2rem; }
+    strong { color: var(--navy); }
+    a { color: var(--blue); }
+  </style>
 </head>
 <body>
-  <div class="page-noise" aria-hidden="true"></div>
-  <div class="page-glow glow-a" aria-hidden="true"></div>
-  <div class="page-glow glow-b" aria-hidden="true"></div>
-
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="index.html" class="brand">
-        <span class="brand-mark"></span>
-        <span>ENAS Solutions</span>
-      </a>
-      <nav class="nav legal-nav">
-        <a href="index.html">Retour au site</a>
-        <a href="mentions-legales.html">Mentions légales</a>
-      </nav>
+  <header class="header">
+    <div class="container topbar">
+      <a class="logo" href="index.html">Enas <span>digital</span></a>
+      <a class="back" href="index.html">Retour au site</a>
     </div>
   </header>
-
   <main>
-    <section class="section legal-section">
-      <div class="container legal-wrap reveal visible">
-        <div class="section-heading legal-heading">
-          <div class="eyebrow">Confidentialité</div>
-          <h1>Politique de confidentialité</h1>
-          <p>Cette page explique la manière dont les données transmises via le site peuvent être collectées et utilisées.</p>
-        </div>
+    <div class="container">
+      <span class="label">Données personnelles</span>
+      <h1>Politique de confidentialité</h1>
+      <p class="intro">Cette page explique quelles données peuvent être collectées via le site enasdigital.fr et comment elles sont utilisées.</p>
 
-        <div class="legal-card">
-          <h2>Données collectées</h2>
-          <p>Lorsque vous utilisez le formulaire de contact, les informations suivantes peuvent être collectées : nom, adresse e-mail, type de besoin et contenu du message.</p>
-        </div>
+      <div class="content">
+        <h2>Données collectées</h2>
+        <p>Lorsque vous utilisez le formulaire de contact, les informations suivantes peuvent être collectées :</p>
+        <ul>
+          <li>nom ou prénom renseigné dans le formulaire ;</li>
+          <li>adresse email ;</li>
+          <li>message envoyé ;</li>
+          <li>date d'envoi du message.</li>
+        </ul>
 
-        <div class="legal-card">
-          <h2>Finalité</h2>
-          <p>Ces données sont utilisées uniquement pour répondre à votre demande, échanger au sujet de votre projet et assurer le suivi des prises de contact.</p>
-        </div>
+        <h2>Finalité</h2>
+        <p>Ces données servent uniquement à répondre à votre demande, préparer un éventuel devis et échanger au sujet de votre projet.</p>
 
-        <div class="legal-card">
-          <h2>Base de traitement</h2>
-          <p>Le traitement repose sur votre consentement, matérialisé par l’envoi volontaire du formulaire de contact.</p>
-        </div>
+        <h2>Base légale</h2>
+        <p>Le traitement repose sur votre consentement lorsque vous envoyez volontairement un message via le formulaire ou par email.</p>
 
-        <div class="legal-card">
-          <h2>Destinataires</h2>
-          <p>Les données reçues sont destinées à ENAS Solutions / HADDADI NASSIMA. Elles peuvent transiter par les outils techniques utilisés pour le formulaire, l’hébergement du site ou la messagerie électronique.</p>
-        </div>
+        <h2>Durée de conservation</h2>
+        <p>Les messages peuvent être conservés jusqu'à 3 ans après le dernier échange, sauf demande de suppression de votre part.</p>
 
-        <div class="legal-card">
-          <h2>Durée de conservation</h2>
-          <p>Les données sont conservées pendant la durée nécessaire au traitement de la demande, puis archivées ou supprimées dans un délai raisonnable, sauf obligation légale contraire.</p>
-        </div>
+        <h2>Partage des données</h2>
+        <p>Les données ne sont pas vendues. Elles peuvent transiter par les services techniques nécessaires au fonctionnement du site, par exemple l'hébergeur Render, Supabase pour l'authentification admin, ou Formspree si le formulaire de contact est activé.</p>
 
-        <div class="legal-card">
-          <h2>Vos droits</h2>
-          <p>Conformément à la réglementation applicable, vous pouvez demander l’accès, la rectification ou la suppression de vos données en écrivant à <a href="mailto:Nassima.haddadi2026@gmail.com">Nassima.haddadi2026@gmail.com</a>.</p>
-          <p><strong>Responsable du traitement :</strong> HADDADI NASSIMA — Paris, France.</p>
-        </div>
+        <h2>Cookies</h2>
+        <p>Le site n'utilise pas de cookies publicitaires. La page admin peut conserver une session technique Supabase pour maintenir la connexion de l'administrateur.</p>
 
-        <div class="legal-card">
-          <h2>Cookies et mesure d’audience</h2>
-          <p>Si vous ajoutez plus tard des outils d’analyse ou des cookies non essentiels, il sera recommandé de mettre en place un bandeau de consentement et d’actualiser cette page.</p>
-        </div>
+        <h2>Vos droits</h2>
+        <p>Vous pouvez demander l'accès, la rectification ou la suppression de vos données en écrivant à <a href="mailto:contact@enasdigital.fr">contact@enasdigital.fr</a>.</p>
+
+        <h2>Contact</h2>
+        <p>Pour toute question liée à la confidentialité, contactez <a href="mailto:contact@enasdigital.fr">contact@enasdigital.fr</a>.</p>
       </div>
-    </section>
+    </div>
   </main>
 </body>
 </html>
