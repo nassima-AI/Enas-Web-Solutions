@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <title>Admin - Enas digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --navy: #0f2444;
+      --blue: #2563eb;
+      --accent: #0ea5e9;
+      --pale: #eff6ff;
+      --white: #ffffff;
+      --off: #f8fafc;
+      --line: #e2e8f0;
+      --muted: #64748b;
+      --text: #334155;
+      --danger: #dc2626;
+      --success: #16a34a;
+      --radius: 0.75rem;
+      --shadow: 0 20px 60px rgba(15, 36, 68, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(37,99,235,0.12), transparent 34rem),
+        linear-gradient(165deg, #f0f7ff 0%, #ffffff 52%, #f8fafc 100%);
+    }
+
+    .shell {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--blue); }
+
+    .public-link,
+    .logout-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 42px;
+      padding: 0 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.78);
+      color: var(--navy);
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 180ms ease;
+    }
+
+    .public-link:hover,
+    .logout-btn:hover,
+    .secondary-btn:hover {
+      border-color: rgba(37,99,235,0.35);
+      color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .auth-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.7fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .intro h1 {
+      max-width: 720px;
+      color: var(--navy);
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .intro h1 span { color: var(--blue); }
+
+    .intro p {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .security-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .security-item {
+      min-height: 116px;
+      padding: 1rem;
+      border: 1px solid rgba(37,99,235,0.12);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.74);
+    }
+
+    .security-item strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+
+    .security-item span {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(226,232,240,0.9);
+      border-radius: 1.25rem;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+    }
+
+    .panel h2 {
+      color: var(--navy);
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+    label {
+      display: block;
+      color: var(--navy);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    input {
+      width: 100%;
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      color: var(--navy);
+      background: var(--white);
+      font: inherit;
+      outline: none;
+      transition: 160ms ease;
+    }
+
+    input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.11);
+    }
+
+    .primary-btn {
+      width: 100%;
+      min-height: 48px;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--blue);
+      color: white;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(37,99,235,0.25);
+      transition: 180ms ease;
+    }
+
+    .primary-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .primary-btn:disabled {
+      opacity: 0.62;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .message {
+      display: none;
+      margin: 1rem 0;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .message.error {
+      display: block;
+      color: var(--danger);
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+    }
+
+    .message.success {
+      display: block;
+      color: var(--success);
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .dashboard { display: none; }
+
+    .dashboard-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .dashboard-head h1 {
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .dashboard-head p {
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1.25rem;
+    }
+
+    .card span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.7rem;
+      margin-top: 0.35rem;
+    }
+
+    .admin-section {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .admin-section h2 {
+      color: var(--navy);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .admin-section p,
+    .admin-section li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.94rem;
+    }
+
+    .admin-section ul {
+      padding-left: 1.2rem;
+      margin-top: 0.6rem;
+    }
+
+    .config-warning {
+      display: none;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid #fed7aa;
+      background: #fff7ed;
+      color: #9a3412;
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 860px) {
+      .auth-layout { grid-template-columns: 1fr; }
+      .security-list,
+      .cards { grid-template-columns: 1fr; }
+      .dashboard-head { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="topbar">
+      <a href="index.html" class="logo">Enas <span>digital</span></a>
+      <a href="index.html" class="public-link">Retour au site</a>
+    </div>
+
+    <section id="auth-view" class="auth-layout">
+      <div class="intro">
+        <h1>Espace admin <span>sécurisé</span></h1>
+        <p>Connexion privée avec Supabase Auth. Le dashboard n'est affiché que si une session valide existe, et le mot de passe est géré par Supabase, jamais par le code du site.</p>
+        <div class="security-list">
+          <div class="security-item"><strong>Auth réelle</strong><span>Email et mot de passe vérifiés par Supabase Auth.</span></div>
+          <div class="security-item"><strong>Session persistante</strong><span>La connexion reste active tant que la session Supabase est valide.</span></div>
+          <div class="security-item"><strong>Déconnexion</strong><span>Le bouton de sortie détruit la session côté navigateur.</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="config-warning" id="config-warning">
+          Configurez d'abord <strong>SUPABASE_URL</strong> et <strong>SUPABASE_ANON_KEY</strong> dans ce fichier. Les étapes exactes sont dans <code>SUPABASE_ADMIN_SETUP.md</code>.
+        </div>
+        <h2>Connexion admin</h2>
+        <p class="panel-note">Utilisez l'email admin créé dans Supabase. Pour ce site, l'email prévu est <strong>contact@enasdigital.fr</strong>.</p>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" autocomplete="email" placeholder="contact@enasdigital.fr" required/>
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input id="password" type="password" autocomplete="current-password" placeholder="Votre mot de passe admin" required/>
+          </div>
+          <button class="primary-btn" id="login-btn" type="submit">Se connecter</button>
+        </form>
+        <div id="auth-message" class="message"></div>
+        <button class="secondary-btn" id="reset-password-btn" type="button">Créer ou réinitialiser mon mot de passe</button>
+      </div>
+    </section>
+
+    <section id="dashboard-view" class="dashboard">
+      <div class="dashboard-head">
+        <div>
+          <h1>Dashboard Enas digital</h1>
+          <p id="session-label">Session active</p>
+        </div>
+        <button class="logout-btn" id="logout-btn" type="button">Déconnexion</button>
+      </div>
+
+      <div class="cards">
+        <div class="card"><span>Statut</span><strong>Protégé</strong></div>
+        <div class="card"><span>Compte</span><strong id="admin-email">Admin</strong></div>
+        <div class="card"><span>Messages locaux</span><strong id="message-count">0</strong></div>
+      </div>
+
+      <div class="admin-section">
+        <h2>Demandes reçues</h2>
+        <p id="messages-empty">Les messages sauvegardés localement par le formulaire apparaîtront ici. Pour une vraie boîte de réception multi-appareils, connectez le formulaire à une table Supabase protégée par RLS.</p>
+        <ul id="messages-list"></ul>
+      </div>
+
+      <div class="admin-section">
+        <h2>Sécurité à garder</h2>
+        <ul>
+          <li>Désactivez les inscriptions publiques dans Supabase si vous ne voulez qu'un seul compte admin.</li>
+          <li>Ne mettez jamais de mot de passe, clé service_role ou secret API dans GitHub.</li>
+          <li>Si vous ajoutez des données privées, stockez-les dans Supabase avec des politiques RLS.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const SUPABASE_URL = "https://VOTRE-PROJET.supabase.co";
+    const SUPABASE_ANON_KEY = "VOTRE_CLE_PUBLIQUE_ANON";
+    const ADMIN_EMAIL = "contact@enasdigital.fr";
+
+    const isConfigured = !SUPABASE_URL.includes("VOTRE-PROJET") && !SUPABASE_ANON_KEY.includes("VOTRE_CLE");
+    const supabaseClient = isConfigured
+      ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+          auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+        })
+      : null;
+
+    const authView = document.getElementById("auth-view");
+    const dashboardView = document.getElementById("dashboard-view");
+    const loginForm = document.getElementById("login-form");
+    const loginBtn = document.getElementById("login-btn");
+    const logoutBtn = document.getElementById("logout-btn");
+    const resetBtn = document.getElementById("reset-password-btn");
+    const authMessage = document.getElementById("auth-message");
+    const configWarning = document.getElementById("config-warning");
+
+    if (!isConfigured) {
+      configWarning.style.display = "block";
+      loginBtn.disabled = true;
+      resetBtn.disabled = true;
+    } else {
+      bootAdmin();
+    }
+
+    async function bootAdmin() {
+      const { data } = await supabaseClient.auth.getSession();
+      renderAuthState(data.session);
+
+      supabaseClient.auth.onAuthStateChange((_event, session) => {
+        renderAuthState(session);
+      });
+    }
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!supabaseClient) return;
+      setMessage("");
+      loginBtn.disabled = true;
+      loginBtn.textContent = "Connexion...";
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+      loginBtn.disabled = false;
+      loginBtn.textContent = "Se connecter";
+
+      if (error) {
+        setMessage("Email ou mot de passe incorrect.", "error");
+        return;
+      }
+
+      if (data.user && data.user.email !== ADMIN_EMAIL) {
+        await supabaseClient.auth.signOut();
+        setMessage("Ce compte n'est pas autorisé pour cet espace admin.", "error");
+        return;
+      }
+
+      setMessage("Connexion réussie.", "success");
+    });
+
+    resetBtn.addEventListener("click", async () => {
+      if (!supabaseClient) return;
+      const email = document.getElementById("email").value.trim() || ADMIN_EMAIL;
+      const redirectTo = `${window.location.origin}${window.location.pathname}`;
+      const { error } = await supabaseClient.auth.resetPasswordForEmail(email, { redirectTo });
+      if (error) {
+        setMessage("Impossible d'envoyer l'email de réinitialisation. Vérifiez la configuration Supabase.", "error");
+        return;
+      }
+      setMessage("Email envoyé. Ouvrez le lien Supabase reçu pour définir votre mot de passe admin.", "success");
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      if (!supabaseClient) return;
+      await supabaseClient.auth.signOut();
+      setMessage("Vous êtes déconnecté.", "success");
+    });
+
+    function renderAuthState(session) {
+      const user = session?.user;
+      const isAdmin = user?.email === ADMIN_EMAIL;
+
+      if (!session || !isAdmin) {
+        authView.style.display = "grid";
+        dashboardView.style.display = "none";
+        if (session && !isAdmin) supabaseClient.auth.signOut();
+        return;
+      }
+
+      authView.style.display = "none";
+      dashboardView.style.display = "block";
+      document.getElementById("admin-email").textContent = user.email;
+      document.getElementById("session-label").textContent = `Connecté avec ${user.email}`;
+      renderMessages();
+    }
+
+    function renderMessages() {
+      const list = document.getElementById("messages-list");
+      const empty = document.getElementById("messages-empty");
+      const count = document.getElementById("message-count");
+      let messages = [];
+
+      try {
+        messages = JSON.parse(localStorage.getItem("enas_messages") || "[]");
+      } catch {
+        messages = [];
+      }
+
+      count.textContent = String(messages.length);
+      empty.style.display = messages.length ? "none" : "block";
+      list.innerHTML = messages.slice(0, 10).map((message) => {
+        const date = message.date ? new Date(message.date).toLocaleString("fr-FR") : "Date inconnue";
+        return `<li><strong>${escapeHtml(message.name || "Sans nom")}</strong> - ${escapeHtml(message.email || "")}<br>${escapeHtml(message.message || "")}<br><small>${date}</small></li>`;
+      }).join("");
+    }
+
+    function setMessage(text, type) {
+      authMessage.textContent = text;
+      authMessage.className = text ? `message ${type}` : "message";
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
+</body>
+</html>
