@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://enasdigital.fr/sitemap.txt
+Sitemap: https://enasdigital.fr/sitemap.xml

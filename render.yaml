@@ -1,0 +1,6 @@
+services:
+  - type: static
+    name: enas-digital
+    env: static
+    buildCommand: ""
+    staticPublishPath: .
