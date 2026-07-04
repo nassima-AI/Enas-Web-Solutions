@@ -35,9 +35,11 @@
       backdrop-filter: blur(12px);
     }
     .container { width: min(960px, calc(100% - 2rem)); margin: 0 auto; }
-    .topbar { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .topbar { min-height: 280px; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
     .logo { color: var(--navy); font-size: 1.25rem; font-weight: 800; text-decoration: none; letter-spacing: -0.03em; }
     .logo span { color: var(--blue); }
+    .logo-image { display: inline-flex; align-items: center; width: clamp(360px, 38vw, 620px); height: 280px; overflow: visible; }
+    .logo-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
     .back {
       display: inline-flex;
       align-items: center;
@@ -82,7 +84,7 @@
 <body>
   <header class="header">
     <div class="container topbar">
-      <a class="logo" href="index.html">Enas <span>digital</span></a>
+      <a class="logo logo-image" href="index.html" aria-label="Enas digital - Accueil"><img src="assets/enas-digital-logo.png" alt="Enas digital"/></a>
       <a class="back" href="index.html">Retour au site</a>
     </div>
   </header>

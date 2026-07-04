@@ -59,6 +59,19 @@
     }
 
     .logo span { color: var(--blue); }
+    .logo-image {
+      display: inline-flex;
+      align-items: center;
+      width: clamp(360px, 38vw, 620px);
+      height: 280px;
+      overflow: visible;
+    }
+    .logo-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
 
     .public-link,
     .logout-btn,
@@ -336,7 +349,7 @@
 <body>
   <main class="shell">
     <div class="topbar">
-      <a href="index.html" class="logo">Enas <span>digital</span></a>
+      <a href="index.html" class="logo logo-image" aria-label="Enas digital - Accueil"><img src="assets/enas-digital-logo.png" alt="Enas digital"/></a>
       <a href="index.html" class="public-link">Retour au site</a>
     </div>
 
