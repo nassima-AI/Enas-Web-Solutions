@@ -102,6 +102,8 @@ section{padding:68px 0}
 .services .service-card.featured p{color:var(--muted)}
 .service-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px;background:#fbf3e4;color:#8a672b;font-weight:900}
 .service-card.featured .service-icon{background:#efe2c5;color:#8a672b}
+.services .service-card .service-photo{width:100%;height:118px;aspect-ratio:auto;object-fit:cover;border-radius:16px;margin:0 0 18px;border:1px solid rgba(17,17,17,.06);box-shadow:0 12px 24px rgba(17,17,17,.075)}
+.services .service-card.featured .service-photo{height:132px;border-color:#dcc89f}
 .price{font-size:1.02rem}
 .service-details{margin-top:auto;padding-top:18px}
 .service-details summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;border:1px solid #eadfce;border-radius:999px;padding:10px 14px;color:#151515;background:#fbf7f0;font-weight:900;cursor:pointer}
@@ -148,6 +150,7 @@ section{padding:68px 0}
   .hero-grid{grid-template-columns:1fr}.hero img{max-width:100%;aspect-ratio:16/10;order:2}.hero-grid>div{order:1}
   .services-grid,.grid-3,.grid-2{grid-template-columns:1fr}
   .services .service-card.featured{grid-column:auto}
+  .services .service-card .service-photo,.services .service-card.featured .service-photo{height:150px}
   .blog-card{grid-template-columns:1fr}.blog-visual img{aspect-ratio:16/8}
   .floating-actions{right:14px;bottom:14px}.chat-assistant{right:14px;bottom:106px}
 }
