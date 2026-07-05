@@ -197,18 +197,20 @@
   </footer>
   <div class="floating-actions" aria-label="Aide rapide">
     <a class="whatsapp-float" href="https://wa.me/33761688425?text=Bonjour%20Enas%20digital%2C%20je%20souhaite%20avoir%20des%20informations%20pour%20mon%20projet." target="_blank" rel="noopener" aria-label="Contacter Enas digital sur WhatsApp">WhatsApp</a>
-    <button class="chat-toggle" type="button" aria-expanded="false" aria-controls="chat-assistant">Assistant</button>
+    <button class="chat-toggle" type="button" aria-expanded="false" aria-controls="chat-assistant" aria-label="Ouvrir l’assistant conversationnel">
+      <span class="chat-symbol" aria-hidden="true"></span>
+    </button>
   </div>
   <section class="chat-assistant" id="chat-assistant" aria-label="Assistant conversationnel Enas digital" hidden>
     <div class="chat-head">
       <div>
         <strong>Assistant Enas digital</strong>
-        <span>Réponse rapide</span>
+        <span>Posez votre question</span>
       </div>
       <button class="chat-close" type="button" aria-label="Fermer l’assistant">×</button>
     </div>
     <div class="chat-body" id="chat-body">
-      <p class="chat-message bot">Bonjour, je peux vous aider à choisir une offre, comprendre les tarifs ou préparer votre demande de devis.</p>
+      <p class="chat-message bot">Bonjour, je peux vous aider à choisir une offre, comprendre les tarifs, les délais, les automatisations ou préparer votre demande de devis.</p>
     </div>
     <div class="chat-options" aria-label="Questions rapides">
       <button type="button" data-reply="site">Je veux un site</button>
@@ -216,6 +218,11 @@
       <button type="button" data-reply="price">Tarifs</button>
       <button type="button" data-reply="contact">Contact</button>
     </div>
+    <form class="chat-form" id="chat-form">
+      <label class="sr-only" for="chat-input">Votre question</label>
+      <input id="chat-input" type="text" autocomplete="off" placeholder="Écrivez votre question..."/>
+      <button type="submit" aria-label="Envoyer la question">Envoyer</button>
+    </form>
   </section>
   <script src="script.js"></script>
 </body>
