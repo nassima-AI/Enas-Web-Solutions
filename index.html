@@ -8,15 +8,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css?v=about-teaser-20260709"/>
 </head>
 <body>
   <header class="site-header">
     <div class="container topbar">
-      <a class="logo logo-image" href="#accueil" aria-label="Enas digital - Accueil"><img src="assets/enas-digital-logo.png" alt="Enas digital"/></a>
+      <a class="logo logo-image" href="#accueil" aria-label="Enas digital - Accueil"><img src="assets/enas-digital-logo.png?v=simple-20260708" alt="Enas digital"/></a>
       <nav class="nav" aria-label="Navigation principale">
         <a href="#services">Offres</a>
-        <a href="#creations">Créations</a>
+        <a href="#creations">Pour qui ?</a>
         <a href="#methode">Méthode</a>
         <a href="#blog">Blog</a>
         <a href="#faq">FAQ</a>
@@ -27,7 +27,17 @@
   <main>
     <section class="hero" id="accueil">
       <div class="container hero-grid">
-        <img src="assets/hero-digital-consultant-realistic.png" alt="Création digitale et automatisations dans un espace de travail professionnel"/>
+        <div class="hero-motion" aria-label="Animation illustrant un parcours digital automatisé">
+          <div class="motion-screen">
+            <a class="motion-pill" href="#service-automatisation">Automatisation</a>
+            <a class="motion-pill" href="#service-agent-ia">Agent IA</a>
+            <a class="motion-pill" href="#service-site-web">Site web professionnel</a>
+            <a class="motion-pill" href="#service-refonte">Refonte & optimisation</a>
+            <a class="motion-pill" href="#service-rendez-vous">Rendez-vous & suivi</a>
+          </div>
+          <div class="motion-orbit motion-orbit-one"></div>
+          <div class="motion-orbit motion-orbit-two"></div>
+        </div>
         <div>
           <p class="label">Création Digitale & Automatisation</p>
           <h1>Un site professionnel pour présenter votre activité et générer plus de demandes</h1>
@@ -41,9 +51,24 @@
     </section>
     <section class="trust">
       <div class="container trust-grid">
-        <article class="trust-card"><h3>Une présence rassurante</h3><p>Une page d’accueil soignée, des messages simples et un parcours qui guide vers la prise de contact.</p></article>
-        <article class="trust-card"><h3>Des contenus lisibles</h3><p>Services, méthode, FAQ et contact structurés pour que vos visiteurs comprennent vite ce que vous proposez.</p></article>
-        <article class="trust-card"><h3>Des outils utiles</h3><p>Formulaires, emails, prise de rendez-vous et automatisations simples selon vos besoins réels.</p></article>
+        <article class="trust-card">
+          <span class="trust-icon">01</span>
+          <p class="trust-kicker">Comprendre vite</p>
+          <h3>Une présence rassurante</h3>
+          <p>Une première impression soignée, des messages simples et un parcours qui guide naturellement vers la prise de contact.</p>
+        </article>
+        <article class="trust-card">
+          <span class="trust-icon">02</span>
+          <p class="trust-kicker">Clarifier l’offre</p>
+          <h3>Des contenus lisibles</h3>
+          <p>Services, méthode, FAQ et contact sont structurés pour que vos visiteurs comprennent rapidement ce que vous proposez.</p>
+        </article>
+        <article class="trust-card">
+          <span class="trust-icon">03</span>
+          <p class="trust-kicker">Gagner du temps</p>
+          <h3>Des outils utiles</h3>
+          <p>Formulaires, emails, rendez-vous et automatisations simples peuvent être connectés selon vos besoins réels.</p>
+        </article>
       </div>
     </section>
     <section class="services" id="services">
@@ -54,34 +79,105 @@
           <p class="lead">Je vous accompagne pour créer une présence digitale claire, mais aussi pour automatiser vos tâches répétitives, mieux suivre vos demandes et intégrer des agents IA utiles à votre quotidien.</p>
         </div>
         <div class="services-grid">
-          <article class="service-card featured"><img class="service-photo" src="assets/service-automation-real.png" alt="Automatisation des processus avec demandes, emails et calendrier connectés"/><span class="service-icon" aria-hidden="true">01</span><h3>Automatisation des processus</h3><p class="price">Sur devis selon complexité</p><details class="service-details"><summary>Détails</summary><p>Mise en place d’automatisations simples pour réduire les tâches répétitives et mieux gérer les demandes reçues.</p><ul><li>Formulaires structurés et emails automatiques</li><li>Connexion Calendly, WhatsApp, Google Sheets ou outils métier</li><li>Suivi des demandes dans un tableau clair</li><li>Scénarios Make, Zapier ou outils équivalents</li><li>Notifications et étapes de suivi pour éviter les oublis</li></ul></details></article><article class="service-card"><img class="service-photo" src="assets/service-ai-agents.png" alt="Création d’agents IA pour répondre et orienter les demandes"/><span class="service-icon" aria-hidden="true">02</span><h3>Création d’agents IA</h3><p class="price">Sur devis selon besoin</p><details class="service-details"><summary>Détails</summary><p>Création d’agents IA utiles pour accueillir, qualifier, orienter ou préparer le suivi des demandes clients.</p><ul><li>Définition du rôle de l’agent et de ses limites</li><li>Réponses adaptées à votre activité et à vos services</li><li>Qualification des demandes avant prise de contact</li><li>Intégration possible au site, formulaire ou outils internes</li><li>Approche simple, progressive et compréhensible</li></ul></details></article><article class="service-card"><img class="service-photo" src="assets/service-vitrine-real.png" alt="Site web professionnel présenté sur tablette dans une activité locale"/><span class="service-icon" aria-hidden="true">03</span><h3>Site web professionnel</h3><p class="price">À partir de 490 €</p><details class="service-details"><summary>Détails</summary><p>Création d’un site clair pour présenter votre activité, vos services et faciliter la prise de contact.</p><ul><li>Cadrage de votre besoin et de votre message principal</li><li>Structure des pages et parcours vers le devis</li><li>Design responsive adapté mobile</li><li>Formulaire de contact et liens utiles</li><li>Mise en ligne et accompagnement de prise en main</li></ul></details></article><article class="service-card"><img class="service-photo" src="assets/service-suivi-real.png" alt="Accompagnement digital avec checklist et suivi humain"/><span class="service-icon" aria-hidden="true">04</span><h3>Accompagnement et optimisation</h3><p class="price">À partir de 39 € / mois</p><details class="service-details"><summary>Détails</summary><p>Un suivi léger pour faire évoluer votre site, vos contenus et vos outils après la mise en ligne.</p><ul><li>Petites modifications de textes ou sections</li><li>Ajout de nouvelles pages ou contenus</li><li>Amélioration des formulaires ou parcours de contact</li><li>Conseils sur les outils à connecter</li><li>Optimisations progressives selon vos priorités</li></ul></details></article>
+          <article class="service-card service-offer" id="service-site-web">
+            <img class="offer-image" src="assets/service-site-professionnel-real.png" alt="Site professionnel clair sur tablette et mobile"/>
+            <p class="tag">Site web professionnel</p>
+            <h3>Présenter son activité clairement</h3>
+            <p class="price">À partir de 490 €</p>
+            <p><strong>Exemple :</strong> un indépendant, un commerce ou un service local veut expliquer ce qu’il propose.</p>
+            <p><strong>Solution :</strong> un site simple avec présentation, offres, méthode, FAQ, contact et bouton de devis.</p>
+            <p><strong>Résultat :</strong> les visiteurs comprennent vite et savent comment vous contacter.</p>
+            <a class="service-link" href="service.html?service=site-web-professionnel">Voir le détail du service →</a>
+          </article>
+          <article class="service-card service-offer" id="service-automatisation">
+            <img class="offer-image" src="assets/service-automation-real.png" alt="Automatisation des demandes, emails et suivi"/>
+            <p class="tag">Automatisation</p>
+            <h3>Recevoir et organiser les demandes</h3>
+            <p class="price">Sur devis selon complexité</p>
+            <p><strong>Exemple :</strong> une personne remplit un formulaire et vous voulez éviter de tout gérer à la main.</p>
+            <p><strong>Solution :</strong> le message arrive par email, se range dans un tableau et peut déclencher une réponse automatique.</p>
+            <p><strong>Résultat :</strong> moins d’oublis, plus de clarté et un suivi plus simple.</p>
+            <a class="service-link" href="service.html?service=automatisation">Voir le détail du service →</a>
+          </article>
+          <article class="service-card service-offer" id="service-agent-ia">
+            <img class="offer-image" src="assets/service-ai-agents.png" alt="Agent IA pour répondre aux questions simples"/>
+            <p class="tag">Agent IA</p>
+            <h3>Répondre aux questions simples</h3>
+            <p class="price">Sur devis selon besoin</p>
+            <p><strong>Exemple :</strong> vos visiteurs posent souvent les mêmes questions sur vos services, prix ou délais.</p>
+            <p><strong>Solution :</strong> un agent IA répond aux questions courantes et oriente vers le bon service ou le formulaire.</p>
+            <p><strong>Résultat :</strong> vos visiteurs sont guidés même quand vous n’êtes pas disponible.</p>
+            <a class="service-link" href="service.html?service=agent-ia">Voir le détail du service →</a>
+          </article>
+          <article class="service-card service-offer" id="service-rendez-vous">
+            <img class="offer-image" src="assets/service-suivi-real.png" alt="Prise de rendez-vous et suivi client"/>
+            <p class="tag">Rendez-vous & suivi</p>
+            <h3>Simplifier les réservations</h3>
+            <p class="price">Sur devis</p>
+            <p><strong>Exemple :</strong> vous échangez plusieurs messages avant de trouver un créneau disponible.</p>
+            <p><strong>Solution :</strong> un lien Calendly, des rappels et un formulaire clair avant le rendez-vous.</p>
+            <p><strong>Résultat :</strong> moins d’allers-retours et des demandes mieux préparées.</p>
+            <a class="service-link" href="service.html?service=rendez-vous-suivi">Voir le détail du service →</a>
+          </article>
+          <article class="service-card service-offer" id="service-refonte">
+            <img class="offer-image" src="assets/service-refonte-optimisation-real.png" alt="Refonte et optimisation d’un site existant avant après"/>
+            <p class="tag">Refonte & optimisation</p>
+            <h3>Rendre une offre plus lisible</h3>
+            <p class="price">À partir de 290 €</p>
+            <p><strong>Exemple :</strong> vous avez déjà une présence en ligne, mais vos services ne sont pas assez clairs.</p>
+            <p><strong>Solution :</strong> restructurer les pages, les textes, les appels à l’action et le parcours de contact.</p>
+            <p><strong>Résultat :</strong> une image plus professionnelle et des visiteurs mieux orientés.</p>
+            <a class="service-link" href="service.html?service=refonte-optimisation">Voir le détail du service →</a>
+          </article>
         </div>
       </div>
     </section>
     <section class="creations" id="creations">
       <div class="container">
         <div class="section-head">
-          <p class="label">Exemples concrets</p>
-          <h2>Des solutions digitales faciles à comprendre et utiles au quotidien</h2>
-          <p class="lead">Voici des exemples de projets possibles : site web, automatisation, agent IA ou outils connectés. L’objectif est simple : mieux présenter votre activité, gagner du temps et recevoir des demandes plus claires.</p>
+          <p class="label">Pour qui ?</p>
+          <h2>Des solutions pensées pour plusieurs familles de métiers</h2>
+          <p class="lead">Les services peuvent être adaptés à des activités très différentes. L’idée n’est pas de copier un modèle, mais de structurer un parcours clair selon votre métier, vos clients et vos demandes.</p>
         </div>
-        <div class="grid-3">
-          <article class="card sage"><img src="assets/service-vitrine-real.png" alt="Site web clair pour présenter une activité"/><p class="tag">SITE WEB PROFESSIONNEL</p><h3>Présenter son activité clairement</h3><p><strong>Exemple :</strong> un indépendant, un commerce ou un service local veut expliquer ce qu’il propose.</p><p><strong>Solution :</strong> un site simple avec présentation, offres, méthode, FAQ, contact et bouton de devis.</p><p><strong>Résultat :</strong> les visiteurs comprennent vite et savent comment vous contacter.</p></article><article class="card blue"><img src="assets/service-automation-real.png" alt="Automatisation des demandes clients"/><p class="tag">AUTOMATISATION</p><h3>Recevoir et organiser les demandes</h3><p><strong>Exemple :</strong> une personne remplit un formulaire et vous voulez éviter de tout gérer à la main.</p><p><strong>Solution :</strong> le message arrive par email, se range dans un tableau et peut déclencher une réponse automatique.</p><p><strong>Résultat :</strong> moins d’oublis, plus de clarté et un suivi plus simple.</p></article><article class="card sand"><img src="assets/service-ai-agents.png" alt="Agent IA qui répond aux questions simples"/><p class="tag">AGENT IA</p><h3>Répondre aux questions simples</h3><p><strong>Exemple :</strong> vos visiteurs posent souvent les mêmes questions sur vos services, prix ou délais.</p><p><strong>Solution :</strong> un agent IA répond aux questions courantes et oriente vers le bon service ou le formulaire.</p><p><strong>Résultat :</strong> vos visiteurs sont guidés même quand vous n’êtes pas disponible.</p></article>
-        </div>
-        <div class="grid-2">
-          <article class="card teal"><img src="assets/service-suivi-real.png" alt="Suivi automatisé des rendez-vous et devis"/><p class="tag">SUIVI & RENDEZ-VOUS</p><h3>Simplifier la prise de rendez-vous</h3><p><strong>Exemple :</strong> vous perdez du temps à proposer des créneaux ou à confirmer les rendez-vous.</p><p><strong>Solution :</strong> un lien Calendly, un message de confirmation et un rappel simple selon votre besoin.</p><p><strong>Résultat :</strong> le parcours est plus fluide pour vous et pour vos clients.</p></article><article class="card lavender"><img src="assets/creation-plomberie-v4.png" alt="Parcours de devis pour artisans et services locaux"/><p class="tag">DEVIS & CONTACT</p><h3>Transformer une demande en devis clair</h3><p><strong>Exemple :</strong> un artisan, un prestataire ou un commerce reçoit des demandes incomplètes.</p><p><strong>Solution :</strong> un formulaire guide le client avec les bonnes questions avant l’envoi.</p><p><strong>Résultat :</strong> vous recevez des demandes plus précises et vous gagnez du temps pour répondre.</p></article>
+        <div class="audience-grid">
+          <article class="audience-card"><img class="audience-image" src="assets/creation-therapeute-v4.png" alt="Espace santé et bien-être avec suivi client"/><h3>Santé & bien-être</h3><p>Médecins, dentistes, thérapeutes, psychologues, coachs bien-être, nutrition, sophrologie.</p><details><summary>Voir les besoins fréquents</summary><ul><li>Présenter l’approche, les spécialités et les informations pratiques</li><li>Faciliter la prise de rendez-vous ou les demandes de contact</li><li>Répondre aux questions fréquentes avant le premier échange</li></ul></details></article>
+          <article class="audience-card"><img class="audience-image" src="assets/creation-plomberie-v4.png" alt="Artisan en intervention avec demande de devis"/><h3>Artisans & services locaux</h3><p>Plombiers, électriciens, peintres, serruriers, menuisiers, entreprises de rénovation.</p><details><summary>Voir les besoins fréquents</summary><ul><li>Mettre en avant les prestations et la zone d’intervention</li><li>Recevoir des demandes de devis plus précises</li><li>Créer un parcours rapide vers l’appel ou le formulaire</li></ul></details></article>
+          <article class="audience-card"><img class="audience-image" src="assets/creation-coach-nutrition-v4.png" alt="Univers beauté et commerce avec présentation d’offres"/><h3>Soins, beauté & commerce</h3><p>Instituts, coiffeurs, esthéticiennes, boutiques, créateurs, commerces indépendants.</p><details><summary>Voir les besoins fréquents</summary><ul><li>Valoriser l’univers visuel, les offres et les tarifs</li><li>Connecter un outil de réservation ou de demande</li><li>Automatiser les confirmations et rappels simples</li></ul></details></article>
+          <article class="audience-card"><img class="audience-image" src="assets/creation-consultant-rh-v4.png" alt="Services professionnels et conseil avec organisation digitale"/><h3>Conseil & services professionnels</h3><p>Consultants, RH, comptables, avocats, formateurs, freelances, coachs professionnels.</p><details><summary>Voir les besoins fréquents</summary><ul><li>Clarifier l’expertise et les offres d’accompagnement</li><li>Structurer les contenus pour rassurer rapidement</li><li>Qualifier les demandes avant un rendez-vous</li></ul></details></article>
+          <article class="audience-card"><img class="audience-image" src="assets/service-suivi-real.png" alt="Formation et accompagnement avec prise de rendez-vous"/><h3>Formation & accompagnement</h3><p>Formateurs, organismes, mentors, accompagnants, créateurs de programmes.</p><details><summary>Voir les besoins fréquents</summary><ul><li>Présenter un programme ou une méthode étape par étape</li><li>Collecter les inscriptions ou demandes d’informations</li><li>Créer des emails de suivi après formulaire</li></ul></details></article>
+          <article class="audience-card"><img class="audience-image" src="assets/creation-boulangerie-v4.png" alt="Restauration et événementiel avec présentation d’offres"/><h3>Restauration & événementiel</h3><p>Restaurants, traiteurs, pâtissiers, lieux de réception, prestataires événementiels.</p><details><summary>Voir les besoins fréquents</summary><ul><li>Présenter les offres, menus, prestations ou réalisations</li><li>Recevoir des demandes de devis ou réservations claires</li><li>Automatiser les confirmations et premières réponses</li></ul></details></article>
         </div>
       </div>
     </section>
     <section class="method" id="methode">
       <div class="container">
         <p class="label">Méthode</p>
-        <h2>Une création guidée, claire et sans jargon</h2>
-        <p class="lead">On avance étape par étape : comprendre votre activité, structurer les contenus, créer les pages, connecter les outils utiles, puis publier quand tout est prêt.</p>
+        <h2>Une méthode claire pour créer, automatiser et améliorer</h2>
+        <p class="lead">La méthode s’adapte au service choisi : site web, automatisation, agent IA, prise de rendez-vous ou refonte. L’objectif reste le même : comprendre votre besoin, construire simplement, tester, puis améliorer.</p>
         <div class="method-grid">
-          <article class="method-card"><div class="step-badge">1</div><span class="step-kicker">Comprendre</span><h3>Cadrage</h3><p>On clarifie vos objectifs, votre cible, le style souhaité, les contenus à prévoir et les priorités du site.</p><p class="step-result">Résultat : une direction claire avant de créer.</p></article>
-          <article class="method-card"><div class="step-badge">2</div><span class="step-kicker">Construire</span><h3>Création</h3><p>Je prépare les sections, l’organisation des pages, l’intégration WordPress, la version mobile et les formulaires.</p><p class="step-result">Résultat : un site lisible, élégant et facile à parcourir.</p></article>
-          <article class="method-card"><div class="step-badge">3</div><span class="step-kicker">Publier</span><h3>Mise en ligne</h3><p>On finalise les derniers ajustements, la connexion du domaine, les outils utiles et la prise en main.</p><p class="step-result">Résultat : votre site est prêt à recevoir des demandes.</p></article>
+          <article class="method-card"><div class="step-badge">1</div><span class="step-kicker">Comprendre</span><h3>Diagnostic du besoin</h3><p>On identifie votre activité, vos objectifs, vos contraintes, vos outils actuels et les points qui vous font perdre du temps.</p><p class="step-result">Résultat : une priorité claire, pas une solution choisie au hasard.</p></article>
+          <article class="method-card"><div class="step-badge">2</div><span class="step-kicker">Structurer</span><h3>Parcours et solution</h3><p>Je définis le bon parcours : pages du site, formulaire, prise de rendez-vous, scénario Make, agent IA ou amélioration d’un site existant.</p><p class="step-result">Résultat : une solution simple à comprendre avant de construire.</p></article>
+          <article class="method-card"><div class="step-badge">3</div><span class="step-kicker">Construire</span><h3>Création et connexions</h3><p>Je mets en place les contenus, les visuels, les formulaires, les automatisations, les outils connectés ou les réponses de l’agent IA.</p><p class="step-result">Résultat : un système concret, utilisable et adapté à votre quotidien.</p></article>
+          <article class="method-card"><div class="step-badge">4</div><span class="step-kicker">Valider</span><h3>Tests et amélioration</h3><p>On teste le parcours complet : affichage mobile, formulaire, email, rendez-vous, automatisation, réponses IA et étapes de suivi.</p><p class="step-result">Résultat : une solution prête à fonctionner, avec des ajustements possibles.</p></article>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="enas-about-editorial enas-about-editorial--compact">
+      <div class="enas-about-editorial__inner">
+        <div class="enas-about-editorial__hero enas-about-editorial__hero--teaser">
+          <div class="enas-about-editorial__hero-copy">
+            <span class="enas-about-editorial__eyebrow">À propos</span>
+            <h2 class="enas-about-editorial__title">Pourquoi Enas Digital&nbsp;?</h2>
+            <p class="enas-about-editorial__subtitle">
+              Transformer les idées en solutions digitales utiles et performantes.
+            </p>
+            <p class="enas-about-editorial__intro-line">
+              Chez Enas Digital, je suis convaincue que la technologie doit être un véritable levier de développement.
+            </p>
+          </div>
+          <div class="enas-about-editorial__teaser-action">
+            <a href="pourquoi-enas-digital.html" class="enas-about-editorial__button">Voir les détails</a>
+          </div>
         </div>
       </div>
     </section>
@@ -92,6 +188,17 @@
           <h2>Conseils pour créer une présence digitale plus utile</h2>
           <p class="lead">Des articles simples pour mieux comprendre les sites web, les automatisations, les agents IA et les outils qui peuvent aider les petites entreprises au quotidien.</p>
         </div>
+        <article class="blog-card">
+          <div class="blog-visual">
+            <img src="assets/service-site-professionnel-real.png" alt="Budget et éléments à prévoir pour un site internet professionnel"/>
+          </div>
+          <div class="blog-content">
+            <p class="tag">CONSEILS</p>
+            <h3>Combien coûte un site internet professionnel en 2026 ?</h3>
+            <p>Un guide clair pour comprendre les repères de prix, les éléments qui font varier le budget et les pièges à éviter avant de créer votre site.</p>
+            <a class="btn btn-primary" href="blog-combien-coute-site-internet-professionnel-2026.html">Lire l’article</a>
+          </div>
+        </article>
         <article class="blog-card">
           <div class="blog-visual">
             <img src="assets/service-automation-real.png" alt="Parcours digital avec formulaire, automatisation et suivi des demandes"/>
@@ -202,7 +309,7 @@
     <div class="container footer-grid">
       <section><h2>Enas <span>digital</span></h2><p>Création digitale & automatisation. Sites WordPress, pages professionnelles, formulaires, automatisations simples et agents AI.</p><a class="btn btn-secondary" href="https://calendly.com/contact-enasdigital/30min" target="_blank" rel="noopener">Réserver un appel Calendly</a></section>
       <section><h3>Infos & devis</h3><p><strong>Email</strong><br/><a href="mailto:contact@enasdigital.fr">contact@enasdigital.fr</a></p><p><strong>Téléphone</strong><br/><a href="tel:+33761688425">07 61 68 84 25</a></p><p><strong>Calendly</strong><br/><a href="https://calendly.com/contact-enasdigital/30min" target="_blank" rel="noopener">Prendre rendez-vous en ligne</a></p><p>Accompagnement à distance, simple et flexible selon votre projet.</p></section>
-      <section><h3>Liens utiles</h3><div class="footer-links"><a href="#services">Offres et accompagnement</a><a href="#creations">Créations</a><a href="#methode">Méthode</a><a href="#blog">Blog</a><a href="#faq">FAQ</a><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a></div></section>
+      <section><h3>Liens utiles</h3><div class="footer-links"><a href="#services">Offres et accompagnement</a><a href="#creations">Pour qui ?</a><a href="#methode">Méthode</a><a href="#blog">Blog</a><a href="#faq">FAQ</a><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a></div></section>
     </div>
     <div class="container footer-bottom"><p>© 2026 Enas digital. Tous droits réservés.</p><p>Création digitale indépendante · WordPress · Automatisation · Agents AI</p></div>
   </footer>
@@ -235,6 +342,7 @@
       <button type="submit" aria-label="Envoyer la question">Envoyer</button>
     </form>
   </section>
+  <script src="services-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
