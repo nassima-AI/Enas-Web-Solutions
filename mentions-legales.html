@@ -79,6 +79,24 @@
     ul { padding-left: 1.2rem; }
     strong { color: var(--navy); }
     a { color: var(--blue); }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    img { max-width: 100%; }
+    @media (max-width: 767px) {
+      .container { width: calc(100% - 1.5rem); }
+      .topbar {
+        min-height: auto;
+        padding: 0.75rem 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      .logo-image { width: 150px; height: 72px; }
+      .back { width: 100%; justify-content: center; min-height: 44px; }
+      main { padding: 2.5rem 0 3rem; }
+      h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
+      .content { border-radius: 1rem; }
+      p, li { overflow-wrap: anywhere; }
+    }
   </style>
 </head>
 <body>

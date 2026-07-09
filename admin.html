@@ -344,6 +344,54 @@
       .cards { grid-template-columns: 1fr; }
       .dashboard-head { flex-direction: column; }
     }
+
+    html, body { max-width: 100%; overflow-x: hidden; }
+    img { max-width: 100%; }
+    input { font-size: 16px; }
+    @media (max-width: 767px) {
+      .shell {
+        width: calc(100% - 1.5rem);
+        padding: 1rem 0 3rem;
+      }
+      .topbar {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      .logo-image {
+        width: 150px;
+        height: 72px;
+      }
+      .public-link,
+      .logout-btn,
+      .secondary-btn {
+        width: 100%;
+        min-height: 44px;
+        justify-content: center;
+      }
+      .intro h1,
+      .dashboard-head h1 {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+      }
+      .intro p {
+        font-size: 1rem;
+      }
+      .panel,
+      .admin-section,
+      .card,
+      .security-item {
+        border-radius: 1rem;
+        padding: 1rem;
+      }
+      .dashboard-head {
+        gap: 1rem;
+      }
+      p, li, strong, code {
+        overflow-wrap: anywhere;
+      }
+    }
   </style>
 </head>
 <body>
