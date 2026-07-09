@@ -174,6 +174,7 @@ renderServiceDetailPage();
 
 const contactForm = document.querySelector('.contact-form');
 const contactStatus = document.querySelector('#contact-status');
+const makeWebhookUrl = 'https://hook.eu2.make.com/ozhsbwv26y0jbaofubjcjagw1hiug4a4';
 
 function buildContactMailto(formData) {
   const name = formData.get('name') || '';
@@ -195,6 +196,19 @@ ${message}`);
   return `mailto:contact@enasdigital.fr?subject=${subject}&body=${body}`;
 }
 
+function buildContactPayload(formData) {
+  return {
+    name: String(formData.get('name') || '').trim(),
+    email: String(formData.get('email') || '').trim(),
+    phone: String(formData.get('phone') || '').trim(),
+    service: String(formData.get('service') || '').trim(),
+    message: String(formData.get('message') || '').trim(),
+    source: 'enasdigital.fr',
+    page: window.location.href,
+    sentAt: new Date().toISOString()
+  };
+}
+
 function showContactFallback(formData) {
   if (!contactStatus) return;
   const fallbackLink = document.createElement('a');
@@ -213,9 +227,7 @@ contactForm?.addEventListener('submit', async event => {
   const submitButton = contactForm.querySelector('button[type="submit"]');
   const originalButtonText = submitButton?.textContent || 'Envoyer ma demande';
   const formData = new FormData(contactForm);
-  formData.set('_subject', 'Nouvelle demande depuis enasdigital.fr');
-  formData.set('_template', 'table');
-  formData.set('_captcha', 'false');
+  const payload = buildContactPayload(formData);
 
   if (contactStatus) {
     contactStatus.className = 'contact-status';
@@ -229,20 +241,23 @@ contactForm?.addEventListener('submit', async event => {
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 9000);
-    const response = await fetch('https://formsubmit.co/ajax/contact@enasdigital.fr', {
+    const timeoutId = setTimeout(() => controller.abort(), 12000);
+    const response = await fetch(makeWebhookUrl, {
       method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: formData,
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload),
       signal: controller.signal
     });
     clearTimeout(timeoutId);
 
-    if (!response.ok) throw new Error(`FormSubmit HTTP ${response.status}`);
+    if (!response.ok) throw new Error(`Make webhook HTTP ${response.status}`);
 
     if (contactStatus) {
       contactStatus.className = 'contact-status success';
-      contactStatus.textContent = 'Votre demande a bien été envoyée. Je vous répondrai sous 24 à 48h ouvrées.';
+      contactStatus.textContent = 'Votre demande a bien été transmise. Je vous répondrai sous 24 à 48h ouvrées.';
     }
     contactForm.reset();
   } catch (error) {
