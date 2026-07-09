@@ -172,6 +172,89 @@ function renderServiceDetailPage() {
 renderServicesSection();
 renderServiceDetailPage();
 
+const contactForm = document.querySelector('.contact-form');
+const contactStatus = document.querySelector('#contact-status');
+
+function buildContactMailto(formData) {
+  const name = formData.get('name') || '';
+  const email = formData.get('email') || '';
+  const phone = formData.get('phone') || '';
+  const service = formData.get('service') || '';
+  const message = formData.get('message') || '';
+  const subject = encodeURIComponent(`Demande de devis - ${service || 'Enas Digital'}`);
+  const body = encodeURIComponent(`Bonjour Enas Digital,
+
+Nom : ${name}
+Email : ${email}
+Téléphone : ${phone}
+Service souhaité : ${service}
+
+Message :
+${message}`);
+
+  return `mailto:contact@enasdigital.fr?subject=${subject}&body=${body}`;
+}
+
+function showContactFallback(formData) {
+  if (!contactStatus) return;
+  const fallbackLink = document.createElement('a');
+  fallbackLink.href = buildContactMailto(formData);
+  fallbackLink.textContent = 'Cliquez ici pour envoyer votre demande par email';
+
+  contactStatus.className = 'contact-status error';
+  contactStatus.textContent = 'L’envoi automatique est temporairement indisponible. ';
+  contactStatus.append(fallbackLink, ' ou contactez-moi sur WhatsApp.');
+}
+
+contactForm?.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (!contactForm.reportValidity()) return;
+
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton?.textContent || 'Envoyer ma demande';
+  const formData = new FormData(contactForm);
+  formData.set('_subject', 'Nouvelle demande depuis enasdigital.fr');
+  formData.set('_template', 'table');
+  formData.set('_captcha', 'false');
+
+  if (contactStatus) {
+    contactStatus.className = 'contact-status';
+    contactStatus.textContent = 'Envoi en cours...';
+  }
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = 'Envoi en cours...';
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 9000);
+    const response = await fetch('https://formsubmit.co/ajax/contact@enasdigital.fr', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: formData,
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+
+    if (!response.ok) throw new Error(`FormSubmit HTTP ${response.status}`);
+
+    if (contactStatus) {
+      contactStatus.className = 'contact-status success';
+      contactStatus.textContent = 'Votre demande a bien été envoyée. Je vous répondrai sous 24 à 48h ouvrées.';
+    }
+    contactForm.reset();
+  } catch (error) {
+    showContactFallback(formData);
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+  }
+});
+
 const chatToggle = document.querySelector('.chat-toggle');
 const chatPanel = document.querySelector('#chat-assistant');
 const chatClose = document.querySelector('.chat-close');

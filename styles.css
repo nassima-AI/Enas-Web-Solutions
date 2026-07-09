@@ -1998,6 +1998,42 @@ canvas{
   font-size:16px;
 }
 
+.contact-status{
+  display:none;
+  margin:16px 0 0;
+  padding:14px 16px;
+  border-radius:16px;
+  font-weight:800;
+  line-height:1.5;
+}
+
+.contact-status:not(:empty){
+  display:block;
+}
+
+.contact-status.success{
+  background:#eef7ef;
+  border:1px solid #bde8c7;
+  color:#14532d;
+}
+
+.contact-status.error{
+  background:#fff7ed;
+  border:1px solid #f0d2a4;
+  color:#7c2d12;
+}
+
+.contact-status a{
+  color:#111;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+.contact-form button[disabled]{
+  cursor:progress;
+  opacity:.68;
+}
+
 .honeypot{
   width:1px!important;
   max-width:1px!important;
