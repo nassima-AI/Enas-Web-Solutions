@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour qui — Détails par métier — Enas Digital</title>
+<style>
+  :root{
+    --navy:#0f1e3d;
+    --navy-light:#16294f;
+    --gold:#c9950f;
+    --gold-light:#e0ac2f;
+    --cream:#fbf7ef;
+    --card-bg:#ffffff;
+    --gray:#5b6472;
+    --border:#eef0f4;
+    --tag-bg:#fbf1dc;
+    --shadow: 0 8px 24px rgba(15,30,61,0.06);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+    background:var(--cream);
+    color:var(--navy);
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:60px 20px 100px;}
+
+  .topnav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 20px;background:#fff;border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:20;flex-wrap:wrap;gap:12px;
+  }
+  .topnav a.back{
+    color:var(--navy);text-decoration:none;font-weight:700;font-size:14px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .topnav a.back svg{width:16px;height:16px;stroke:var(--gold);}
+  .topnav .jumpto{display:flex;gap:6px;flex-wrap:wrap;}
+  .topnav .jumpto a{
+    font-size:12.5px;color:var(--gray);text-decoration:none;
+    padding:6px 10px;border-radius:999px;border:1px solid var(--border);
+    transition:all .2s ease;white-space:nowrap;
+  }
+  .topnav .jumpto a:hover{border-color:var(--gold-light);color:var(--navy);}
+
+  h1.page-title{
+    text-align:center;font-size:clamp(26px,3.6vw,38px);font-weight:800;
+    margin:40px 0 10px;
+  }
+  h1.page-title span{color:var(--gold);}
+  p.page-sub{text-align:center;color:var(--gray);max-width:640px;margin:0 auto 60px;line-height:1.55;}
+
+  .family{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    padding:42px 44px;
+    margin-bottom:36px;
+    scroll-margin-top:90px;
+  }
+  .family-head{display:flex;align-items:center;gap:20px;margin-bottom:26px;}
+  .hex{
+    position:relative;flex:0 0 58px;width:58px;height:58px;
+    border-radius:18px;background:#fffaf2;
+    border:1px solid rgba(201,149,15,.24);
+    box-shadow:0 10px 24px rgba(15,30,61,.08);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hex .hex-outer{display:none;}
+  .hex .hex-inner{
+    position:static;inset:auto;clip-path:none;background:transparent;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hex svg{width:30px;height:30px;stroke:var(--gold);}
+  .family-head h2{margin:0 0 4px;font-size:22px;font-weight:800;}
+  .family-head .audience{margin:0;color:var(--gray);font-size:14px;}
+
+  .block-title{
+    font-size:13px;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--gold);font-weight:800;margin:0 0 14px;
+  }
+
+  .defis{list-style:none;margin:0 0 30px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;}
+  @media(max-width:680px){ .defis{grid-template-columns:1fr;} }
+  .defis li{
+    display:flex;gap:9px;align-items:flex-start;
+    font-size:14px;color:var(--navy-light);line-height:1.5;
+  }
+  .defis li svg{width:15px;height:15px;stroke:var(--gray);flex:0 0 15px;margin-top:2px;}
+
+  .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px;}
+  @media(max-width:680px){ .service-grid{grid-template-columns:1fr;} }
+  .service-block{
+    background:var(--cream);
+    border-radius:14px;
+    padding:20px 22px;
+  }
+  .service-block .shead{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+  .service-block .shead .ic{
+    flex:0 0 32px;width:32px;height:32px;border-radius:9px;
+    background:var(--navy);display:flex;align-items:center;justify-content:center;
+  }
+  .service-block .shead .ic svg{width:17px;height:17px;stroke:var(--gold-light);}
+  .service-block h4{margin:0;font-size:14.5px;font-weight:800;}
+  .service-block ul{margin:0;padding:0;list-style:none;}
+  .service-block li{
+    display:flex;gap:8px;align-items:flex-start;
+    font-size:13.5px;color:var(--navy-light);line-height:1.5;margin-bottom:8px;
+  }
+  .service-block li:last-child{margin-bottom:0;}
+  .service-block li svg{width:14px;height:14px;stroke:#1a8f4c;flex:0 0 14px;margin-top:3px;}
+
+  .example{
+    background:var(--tag-bg);
+    border-left:3px solid var(--gold);
+    border-radius:12px;
+    padding:18px 22px;
+  }
+  .example h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--gold);font-weight:800;}
+  .example p{margin:0;font-size:14.5px;color:var(--navy-light);line-height:1.55;}
+
+  .family-cta{margin-top:22px;display:flex;justify-content:flex-end;}
+  .family-cta a{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--navy);font-weight:700;font-size:14px;text-decoration:none;
+    border-bottom:1.5px solid var(--gold-light);padding-bottom:2px;
+  }
+  .family-cta a:hover{color:var(--gold);}
+  .family-cta svg{width:14px;height:14px;stroke:var(--gold);}
+
+  .cta-bar{
+    margin-top:20px;background:var(--navy);color:#fff;border-radius:18px;
+    padding:36px 40px;display:flex;align-items:center;justify-content:space-between;
+    gap:20px;flex-wrap:wrap;
+  }
+  .cta-bar h4{margin:0 0 4px;font-size:19px;font-weight:800;}
+  .cta-bar p{margin:0;color:#c7cfe0;font-size:14.5px;}
+  .cta-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--gold);color:var(--navy);border-radius:999px;padding:14px 24px;
+    font-weight:700;font-size:14.5px;cursor:pointer;border:none;
+    transition:transform .25s ease;white-space:nowrap;
+  }
+  .cta-btn:hover{transform:translateY(-2px);}
+  .cta-btn svg{width:17px;height:17px;stroke:var(--navy);}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="back" href="index.html#creations">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Retour au schéma
+  </a>
+  <div class="jumpto">
+    <a href="#sante-bien-etre">Santé</a>
+    <a href="#artisans-services-locaux">Artisans</a>
+    <a href="#soins-beaute-commerce">Beauté</a>
+    <a href="#conseil-services-professionnels">Conseil</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <h1 class="page-title">Le détail, <span>famille par famille</span></h1>
+  <p class="page-sub">Pour chaque secteur : vos défis les plus fréquents, puis tout ce que je peux mettre en place — site web ou refonte, automatisation, agent IA, et les autres leviers utiles à votre activité.</p>
+
+  <!-- ============ 1. SANTÉ & BIEN-ÊTRE ============ -->
+  <div class="family" id="sante-bien-etre">
+    <div class="family-head">
+      <div class="hex"><div class="hex-outer"></div><div class="hex-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+      </div></div>
+      <div>
+        <h2>Santé &amp; bien-être</h2>
+        <p class="audience">Médecins, dentistes, thérapeutes, psychologues, coachs bien-être, sophrologues.</p>
+      </div>
+    </div>
+
+    <p class="block-title">Vos défis fréquents</p>
+    <ul class="defis">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Trop de temps passé au téléphone pour la prise de rendez-vous.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Rendez-vous non honorés faute de rappel.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Questions répétitives qui prennent du temps.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Peu de visibilité en ligne face à la concurrence locale.</li>
+    </ul>
+
+    <p class="block-title">Tout ce que je peux mettre en place</p>
+    <div class="service-grid">
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Site web / refonte</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Création ou refonte d'un site présentant votre pratique et vos spécialités.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Page dédiée par praticien/spécialité, avec un discours clair et rassurant.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Version mobile optimisée, où se fait la majorité des recherches.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82 2 2 0 1 1-2.83 2.83 1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33 2 2 0 1 1-2.83-2.83A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82 2 2 0 1 1 2.83-2.83A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33 2 2 0 1 1 2.83 2.83A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><h4>Automatisation</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rappels automatiques de rendez-vous par SMS/email pour réduire les absences.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Formulaires pré-consultation envoyés et collectés automatiquement.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Relances automatiques pour les rendez-vous de suivi ou de renouvellement.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><line x1="12" y1="7" x2="12" y2="11"/><line x1="8" y1="16" x2="8" y2="16.01"/><line x1="16" y1="16" x2="16" y2="16.01"/></svg></div><h4>Agent IA</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Réponses instantanées aux questions fréquentes (horaires, tarifs, remboursements).</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pré-qualification des demandes avant transfert au secrétariat.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Prise de rendez-vous conversationnelle, disponible 24h/24.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><h4>Autres leviers</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Optimisation de la fiche Google Business (avis, horaires, photos).</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Connexion avec votre agenda existant (Doctolib, Google Calendar...).</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tableau de suivi simple de votre activité et de vos rendez-vous.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="example">
+      <h4>Exemple concret</h4>
+      <p>Un cabinet de sophrologie reçoit une quinzaine de demandes de renseignements par semaine. L'agent IA répond directement aux questions courantes et ne transmet au praticien que les demandes qui nécessitent réellement un échange humain.</p>
+    </div>
+
+    <div class="family-cta"><a href="#top-cta">Discuter de mon projet<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+  </div>
+
+  <!-- ============ 2. ARTISANS & SERVICES LOCAUX ============ -->
+  <div class="family" id="artisans-services-locaux">
+    <div class="family-head">
+      <div class="hex"><div class="hex-outer"></div><div class="hex-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 1 0-5.4 5.4l-6.6 6.6a1.8 1.8 0 1 0 2.5 2.5l6.6-6.6a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-2.5z"/></svg>
+      </div></div>
+      <div>
+        <h2>Artisans &amp; services locaux</h2>
+        <p class="audience">Plombiers, électriciens, peintres, serruriers, menuisiers, entreprises de rénovation.</p>
+      </div>
+    </div>
+
+    <p class="block-title">Vos défis fréquents</p>
+    <ul class="defis">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Des urgences qui arrivent en dehors des horaires de travail.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Du temps perdu à rédiger des devis répétitifs.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Difficulté à se démarquer localement sur Google.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Suivi de chantier dispersé entre papier, SMS et mémoire.</li>
+    </ul>
+
+    <p class="block-title">Tout ce que je peux mettre en place</p>
+    <div class="service-grid">
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Site web / refonte</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Site présentant vos réalisations (avant/après), zones d'intervention, certifications.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Refonte d'un site vieillissant, illisible sur mobile, peu rassurant.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Formulaire de demande de devis directement intégré au site.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82 2 2 0 1 1-2.83 2.83 1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33 2 2 0 1 1-2.83-2.83A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82 2 2 0 1 1 2.83-2.83A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33 2 2 0 1 1 2.83 2.83A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><h4>Automatisation</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Génération semi-automatisée de devis à partir d'un formulaire simple.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Suivi de chantier automatisé, partagé avec le client (photos, étapes).</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Relances automatiques de facturation.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><line x1="12" y1="7" x2="12" y2="11"/><line x1="8" y1="16" x2="8" y2="16.01"/><line x1="16" y1="16" x2="16" y2="16.01"/></svg></div><h4>Agent IA</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Qualification des urgences en dehors des horaires (nuit, week-end).</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Réponses aux demandes de devis avec collecte des informations nécessaires.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Prise de rendez-vous pour les visites techniques.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><h4>Autres leviers</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Optimisation du référencement local (Google Maps, avis clients).</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fiche Google Business optimisée et tenue à jour.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tableau de bord simple pour suivre les chantiers en cours.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="example">
+      <h4>Exemple concret</h4>
+      <p>Un plombier reçoit une demande de devis un dimanche à 22h. L'agent IA recueille le type d'intervention, l'urgence et l'adresse, puis programme automatiquement un rappel dès le lundi matin à la première disponibilité.</p>
+    </div>
+
+    <div class="family-cta"><a href="#top-cta">Discuter de mon projet<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+  </div>
+
+  <!-- ============ 3. SOINS, BEAUTÉ & COMMERCE ============ -->
+  <div class="family" id="soins-beaute-commerce">
+    <div class="family-head">
+      <div class="hex"><div class="hex-outer"></div><div class="hex-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+      </div></div>
+      <div>
+        <h2>Soins, beauté &amp; commerce</h2>
+        <p class="audience">Instituts, coiffeurs, esthéticiennes, boutiques, créateurs, commerces indépendants.</p>
+      </div>
+    </div>
+
+    <p class="block-title">Vos défis fréquents</p>
+    <ul class="defis">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Agenda saturé de rendez-vous à gérer manuellement.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Clientèle de passage difficile à fidéliser.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Catalogue peu mis en valeur en ligne.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Rendez-vous oubliés faute de rappel.</li>
+    </ul>
+
+    <p class="block-title">Tout ce que je peux mettre en place</p>
+    <div class="service-grid">
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Site web / refonte</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Site vitrine ou boutique en ligne mettant en valeur votre catalogue.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Refonte d'un site existant pour un design plus moderne et fluide.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Intégration d'un système de paiement en ligne ou d'acompte.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82 2 2 0 1 1-2.83 2.83 1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33 2 2 0 1 1-2.83-2.83A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82 2 2 0 1 1 2.83-2.83A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33 2 2 0 1 1 2.83 2.83A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><h4>Automatisation</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rappels automatiques de rendez-vous.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Relances de fidélisation (anniversaire, offre de retour).</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Collecte automatisée des avis clients après chaque prestation.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><line x1="12" y1="7" x2="12" y2="11"/><line x1="8" y1="16" x2="8" y2="16.01"/><line x1="16" y1="16" x2="16" y2="16.01"/></svg></div><h4>Agent IA</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Réservation en ligne conversationnelle, même hors horaires d'ouverture.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Réponses automatiques sur prestations, prix, disponibilités.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Recommandations de produits ou services complémentaires.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><h4>Autres leviers</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mise en avant du catalogue avec photos et descriptions optimisées.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Présence renforcée sur les réseaux sociaux et Google.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Suivi simple du chiffre d'affaires et des rendez-vous.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="example">
+      <h4>Exemple concret</h4>
+      <p>Un salon de coiffure automatise l'envoi d'un message de relance 6 semaines après chaque coupe, avec un lien de réservation direct — le taux de retour client augmente sans aucune action manuelle.</p>
+    </div>
+
+    <div class="family-cta"><a href="#top-cta">Discuter de mon projet<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+  </div>
+
+  <!-- ============ 4. CONSEIL & SERVICES PROFESSIONNELS ============ -->
+  <div class="family" id="conseil-services-professionnels">
+    <div class="family-head">
+      <div class="hex"><div class="hex-outer"></div><div class="hex-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div></div>
+      <div>
+        <h2>Conseil &amp; services professionnels</h2>
+        <p class="audience">Consultants, RH, comptables, avocats, formateurs, freelances, coachs professionnels.</p>
+      </div>
+    </div>
+
+    <p class="block-title">Vos défis fréquents</p>
+    <ul class="defis">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Des prospects qui contactent en dehors des horaires de bureau.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Pas le temps de qualifier chaque demande entrante.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Une image en ligne qui ne reflète pas votre expertise réelle.</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Suivi des dossiers dispersé entre emails et fichiers.</li>
+    </ul>
+
+    <p class="block-title">Tout ce que je peux mettre en place</p>
+    <div class="service-grid">
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Site web / refonte</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Site qui reflète votre expertise réelle : présentation, références, méthode.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Refonte d'un site daté pour renforcer votre crédibilité.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Page dédiée à chaque offre ou service, avec appel à l'action clair.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82 2 2 0 1 1-2.83 2.83 1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33 2 2 0 1 1-2.83-2.83A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82 2 2 0 1 1 2.83-2.83A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33 2 2 0 1 1 2.83 2.83A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><h4>Automatisation</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Suivi automatisé des dossiers avec rappels d'échéances.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Envoi automatique de documents (devis, contrats, factures).</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Relances automatiques pour les prospects en attente de réponse.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><line x1="12" y1="7" x2="12" y2="11"/><line x1="8" y1="16" x2="8" y2="16.01"/><line x1="16" y1="16" x2="16" y2="16.01"/></svg></div><h4>Agent IA</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Qualification des prospects (besoin, budget, délai) avant transfert.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Réponses aux questions fréquentes sur vos services et méthode.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Prise de rendez-vous automatisée pour les appels découverte.</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <div class="shead"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><h4>Autres leviers</h4></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Optimisation de votre profil LinkedIn pour la prospection.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tunnel de qualification pour filtrer les demandes entrantes.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tableau de suivi de votre pipeline commercial.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="example">
+      <h4>Exemple concret</h4>
+      <p>Un cabinet de conseil RH utilise un agent IA pour pré-qualifier chaque demande de contact reçue sur son site. Seuls les prospects réellement qualifiés remontent jusqu'au dirigeant.</p>
+    </div>
+
+    <div class="family-cta"><a href="#top-cta">Discuter de mon projet<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="cta-bar" id="top-cta">
+    <div>
+      <h4>Votre métier n'est pas listé ?</h4>
+      <p>Chaque activité a ses besoins — parlons du vôtre.</p>
+    </div>
+    <button class="cta-btn" id="ctaBtn">
+      Discutons de votre projet
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('ctaBtn').addEventListener('click', () => {
+    window.location.href = "index.html#contact";
+  });
+</script>
+</body>
+</html>
