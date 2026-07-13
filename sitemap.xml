@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://enasdigital.fr/</loc></url>
-  <url><loc>https://enasdigital.fr/offres.html</loc></url>
-  <url><loc>https://enasdigital.fr/blog-seo-local-2026-attirer-clients-pres-de-chez-soi.html</loc></url>
-  <url><loc>https://enasdigital.fr/blog-automatisation-recevoir-organiser-demandes.html</loc></url>
-  <url><loc>https://enasdigital.fr/blog-site-automatisations-5-blocs-simplifier-activite.html</loc></url>
-  <url><loc>https://enasdigital.fr/blog-combien-coute-site-internet-professionnel-2026.html</loc></url>
-  <url><loc>https://enasdigital.fr/blog-agents-ia-petites-entreprises-2026.html</loc></url>
-  <url><loc>https://enasdigital.fr/blog-site-vitrine-ou-landing-page.html</loc></url>
-  <url><loc>https://enasdigital.fr/blog-automatiser-taches-activite-freelance-2026.html</loc></url>
-  <url><loc>https://enasdigital.fr/mentions-legales.html</loc></url>
-  <url><loc>https://enasdigital.fr/politique-confidentialite.html</loc></url>
+  <url><loc>https://enasdigital.fr/</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://enasdigital.fr/offres.html</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://enasdigital.fr/details.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/methode-details.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/pourquoi-enas-digital.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/blog.html</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://enasdigital.fr/blog-seo-local-2026-attirer-clients-pres-de-chez-soi.html</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/blog-automatisation-recevoir-organiser-demandes.html</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/blog-site-automatisations-5-blocs-simplifier-activite.html</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/blog-combien-coute-site-internet-professionnel-2026.html</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/blog-agents-ia-petites-entreprises-2026.html</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/blog-site-vitrine-ou-landing-page.html</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/blog-automatiser-taches-activite-freelance-2026.html</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/faq.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/mentions-legales.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://enasdigital.fr/politique-confidentialite.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -1,4 +1,5 @@
 User-agent: *
-Disallow: /admin.html
 Allow: /
+Disallow: /admin.html
+
 Sitemap: https://enasdigital.fr/sitemap.xml
