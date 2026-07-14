@@ -3,3 +3,4 @@ Allow: /
 Disallow: /admin.html
 
 Sitemap: https://enasdigital.fr/sitemap.xml
+Sitemap: https://enasdigital.fr/sitemap.txt
