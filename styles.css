@@ -5877,3 +5877,101 @@ h3,
   white-space:nowrap;
   border:0;
 }
+
+/* Centre du schema "Pour qui ?" sans hexagone */
+.schema-center-card{
+  width:min(245px,100%);
+  min-height:180px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:8px;
+  padding:28px 24px;
+  border-radius:30px;
+  text-align:center;
+  color:var(--ink);
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(181,138,69,.28);
+  box-shadow:0 22px 50px rgba(22,33,58,.10);
+  animation:schemaFloat 5.5s ease-in-out infinite;
+}
+
+.schema-center-card .schema-center-icon{
+  width:42px;
+  height:42px;
+  color:var(--gold);
+  margin-bottom:4px;
+}
+
+.schema-center-card p{
+  margin:0;
+  color:var(--ink);
+  font-size:clamp(1rem,1.35vw,1.18rem);
+  font-weight:900;
+  line-height:1.28;
+}
+
+.schema-center-card .schema-center-accent{
+  color:var(--gold);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-style:normal;
+}
+
+@media(max-width:980px){
+  .schema-center-card{
+    width:100%;
+    min-height:auto;
+    padding:20px;
+    border-radius:22px;
+  }
+}
+
+/* Harmonisation des petits titres de sections */
+.faq .section-head .label,
+.contact > .container > .label{
+  font-size:clamp(1.25rem,2.4vw,1.7rem)!important;
+  line-height:1.1;
+  letter-spacing:.12em;
+  margin-bottom:22px;
+}
+
+@media(max-width:767px){
+  .faq .section-head .label,
+  .contact > .container > .label{
+    font-size:clamp(1.05rem,5vw,1.35rem)!important;
+    margin-bottom:16px;
+  }
+}
+
+/* Blog en version courte sur l'accueil */
+.blog-preview .section-head .label{
+  display:block;
+  color:var(--gold);
+  font-size:clamp(2.35rem,5.2vw,4.2rem)!important;
+  line-height:.95;
+  letter-spacing:.08em;
+  margin-bottom:18px;
+}
+
+.blog-preview .blog-list{
+  max-width:920px;
+}
+
+.blog-preview .blog-actions{
+  margin-top:24px;
+}
+
+@media(max-width:767px){
+  .blog-preview .section-head .label{
+    font-size:clamp(2rem,12vw,3rem)!important;
+    margin-bottom:14px;
+  }
+
+  .blog-card--compact .blog-content{
+    grid-template-columns:1fr;
+  }
+
+  .blog-card--compact .btn{
+    justify-self:start;
+  }
+}

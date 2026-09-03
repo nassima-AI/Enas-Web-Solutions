@@ -271,12 +271,9 @@ function renderSchemaDiagram(config) {
         <svg class="schema-connectors" aria-hidden="true"></svg>
         <div class="schema-col schema-col--left">${leftItems.map(item => renderCard(item)).join('')}</div>
         <div class="schema-center">
-          <div class="schema-hexcore">
-            <div class="schema-hex-outer"></div>
-            <div class="schema-hex-inner">
-              ${serviceIcon(config.centerIcon, 'schema-center-icon')}
-              ${config.centerLines.map((line, index) => `<p class="${index === config.centerLines.length - 1 ? 'schema-center-accent' : ''}">${line}</p>`).join('')}
-            </div>
+          <div class="schema-center-card">
+            ${serviceIcon(config.centerIcon, 'schema-center-icon')}
+            ${config.centerLines.map((line, index) => `<p class="${index === config.centerLines.length - 1 ? 'schema-center-accent' : ''}">${line}</p>`).join('')}
           </div>
         </div>
         <div class="schema-col schema-col--right">${rightItems.map(item => renderCard(item, true)).join('')}</div>
@@ -294,7 +291,7 @@ function renderSchemaDiagram(config) {
 
   const stage = mount.querySelector('.schema-stage');
   const svg = mount.querySelector('.schema-connectors');
-  const center = mount.querySelector('.schema-hexcore');
+  const center = mount.querySelector('.schema-center-card');
   const rows = Array.from(mount.querySelectorAll('.schema-row'));
   const cards = Array.from(mount.querySelectorAll('.schema-card'));
   const angleMap = { '1': -140, '2': 140, '3': -40, '4': 40 };
@@ -490,7 +487,7 @@ function renderAudienceDiagram() {
     subtitle: "J'accompagne les entrepreneurs, indépendants et structures qui veulent gagner du temps grâce à l'automatisation et à des agents IA sur mesure — quel que soit leur métier.",
     detailLabel: 'Voir les détails',
     centerIcon: 'target',
-    centerLines: ['Des sites, des automatisations', 'et des agents IA sur mesure.'],
+    centerLines: ['Votre activité est unique,', 'mes solutions aussi.'],
     ctaTitle: 'Vous ne vous reconnaissez pas dans ces profils ?',
     ctaText: 'Parlons de votre projet, chaque activité a ses besoins.',
     ctaButton: 'Discutons de votre projet',
@@ -693,7 +690,6 @@ const searchItems = [
   { title: 'Agent IA', description: 'Assistant, qualification, réponses simples et orientation des demandes', url: 'offres.html#service-agent-ia', keywords: 'agent ia intelligence artificielle chatbot assistant questions' },
   { title: 'Site web professionnel', description: 'Site vitrine, présence digitale et parcours de contact', url: 'offres.html#service-site-web-professionnel', keywords: 'site web vitrine wordpress landing page professionnel' },
   { title: 'Pour qui ?', description: 'Métiers, activités, artisans, santé, beauté, consultants et associations', url: '#creations', keywords: 'pour qui métier artisan santé beauté consultant association commerce' },
-  { title: 'Méthode', description: 'Étapes, analyse, stratégie, développement, lancement et suivi', url: '#methode', keywords: 'méthode methode étapes processus analyse stratégie développement lancement suivi' },
   { title: 'Portfolio', description: 'Réalisations et projets créés', url: '#portfolio', keywords: 'portfolio réalisations projets exemples' },
   { title: 'Blog', description: 'Articles et conseils digitaux', url: 'blog.html', keywords: 'blog article conseil site internet landing page agents ia' },
   { title: 'FAQ', description: 'Questions fréquentes', url: 'faq.html', keywords: 'faq questions réponses coûts modification délai' },

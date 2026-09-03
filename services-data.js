@@ -8,7 +8,7 @@ window.enasServices = [
     description: "Un site professionnel pour expliquer ce que vous proposez, rassurer vos visiteurs et les guider naturellement vers une demande de devis.",
     price: "À partir de 490 €",
     keyPoints: [
-      "Structure claire : accueil, services, méthode, FAQ et contact",
+      "Structure claire : accueil, services, FAQ, contact et appel à l’action",
       "Textes organisés pour présenter votre activité simplement",
       "Design responsive adapté mobile, tablette et ordinateur",
       "Parcours pensé pour faciliter la prise de contact"
@@ -23,7 +23,7 @@ window.enasServices = [
       { title: "Efficacité", description: "Vos visiteurs comprennent rapidement votre activité, vos offres et la prochaine étape à suivre.", icon: "bolt" },
       { title: "Précision", description: "Les contenus sont structurés pour éviter les messages flous et les pages qui dispersent l’attention.", icon: "target" },
       { title: "Gain de temps", description: "Les informations essentielles sont déjà visibles, ce qui réduit les échanges répétitifs.", icon: "clock" },
-      { title: "Meilleure organisation", description: "Vos services, votre méthode et vos informations de contact sont rangés dans un parcours lisible.", icon: "layers" },
+      { title: "Meilleure organisation", description: "Vos services, vos informations clés et vos moyens de contact sont rangés dans un parcours lisible.", icon: "layers" },
       { title: "Meilleure expérience client", description: "Le visiteur se sent guidé, rassuré et sait comment vous contacter sans hésiter.", icon: "heart" },
       { title: "Déploiement rapide", description: "Une base professionnelle peut être préparée et mise en ligne rapidement selon vos contenus.", icon: "rocket" }
     ],
@@ -121,91 +121,9 @@ window.enasServices = [
     ],
     useCases: [
       { title: "Questions fréquentes", description: "L’agent répond aux demandes simples sur vos services, délais, tarifs indicatifs ou fonctionnement." },
-      { title: "Orientation vers le bon service", description: "Le visiteur explique son besoin et l’agent l’aide à choisir entre site, automatisation, refonte ou rendez-vous." },
+      { title: "Orientation vers le bon service", description: "Le visiteur explique son besoin et l’agent l’aide à choisir entre site web, automatisation ou accompagnement IA." },
       { title: "Préqualification", description: "L’agent collecte les premières informations utiles avant un devis ou un échange humain." }
     ],
     tools: ["FAQ intelligente", "Base de connaissances", "Scénarios guidés", "Formulaire ou contact"]
-  },
-  {
-    name: "Rendez-vous & suivi",
-    subtitle: "Calendly, rappels et contact",
-    icon: "calendar",
-    category: "Parcours client",
-    headline: "Simplifier la prise de rendez-vous et le suivi",
-    description: "Un parcours plus fluide pour permettre à vos prospects de réserver, envoyer les bonnes informations et recevoir des confirmations utiles.",
-    price: "Sur devis",
-    keyPoints: [
-      "Intégration Calendly ou autre outil de réservation",
-      "Formulaire avant rendez-vous",
-      "Emails de confirmation ou rappels",
-      "Lien WhatsApp, téléphone ou contact rapide"
-    ],
-    stats: [
-      { value: "-50%", label: "Allers-retours" },
-      { value: "1", label: "Lien clair" },
-      { value: "+", label: "Demandes préparées" }
-    ],
-    slug: "rendez-vous-suivi",
-    benefits: [
-      { title: "Efficacité", description: "Le visiteur sait directement comment demander un échange ou réserver un créneau.", icon: "bolt" },
-      { title: "Précision", description: "Les bonnes questions sont posées avant le rendez-vous pour mieux préparer l’échange.", icon: "target" },
-      { title: "Gain de temps", description: "Moins d’allers-retours pour trouver une disponibilité ou récupérer les informations.", icon: "clock" },
-      { title: "Meilleure organisation", description: "Les demandes, créneaux et rappels peuvent être regroupés dans un parcours simple.", icon: "layers" },
-      { title: "Meilleure expérience client", description: "Le prospect reçoit une confirmation claire et sait à quoi s’attendre.", icon: "heart" },
-      { title: "Déploiement rapide", description: "Une intégration simple peut être mise en place avec vos outils existants.", icon: "rocket" }
-    ],
-    methodology: [
-      { title: "Choix du parcours", description: "On choisit si le contact doit passer par un formulaire, un appel, Calendly, WhatsApp ou une combinaison simple.", icon: "target" },
-      { title: "Préparation des questions", description: "Je crée les champs utiles pour recevoir une demande claire avant le rendez-vous.", icon: "layers" },
-      { title: "Connexion des confirmations", description: "On ajoute les confirmations, rappels ou informations pratiques pour réduire les échanges inutiles.", icon: "calendar" },
-      { title: "Test côté visiteur", description: "On vérifie que le parcours est simple depuis mobile : cliquer, réserver, confirmer ou envoyer une demande.", icon: "rocket" }
-    ],
-    useCases: [
-      { title: "Appel découverte", description: "Le prospect réserve un créneau et reçoit automatiquement les informations utiles." },
-      { title: "Demande mieux préparée", description: "Avant l’échange, vous recevez le type de besoin, le service souhaité et les priorités du projet." },
-      { title: "Suivi après contact", description: "Une confirmation ou un message de suite peut être envoyé pour expliquer les prochaines étapes." }
-    ],
-    tools: ["Calendly", "Formulaire", "Email de confirmation", "WhatsApp", "Rappels"]
-  },
-  {
-    name: "Refonte & optimisation",
-    subtitle: "Clarté, contenu et conversion",
-    icon: "refresh",
-    category: "Amélioration digitale",
-    headline: "Rendre votre offre plus lisible et plus convaincante",
-    description: "Une refonte ciblée pour clarifier votre message, améliorer la hiérarchie des pages et guider davantage les visiteurs vers le contact.",
-    price: "À partir de 290 €",
-    keyPoints: [
-      "Audit du message principal",
-      "Réorganisation des sections importantes",
-      "Amélioration des appels à l’action",
-      "Optimisation du parcours mobile et contact"
-    ],
-    stats: [
-      { value: "+", label: "Lisibilité" },
-      { value: "1", label: "Parcours simplifié" },
-      { value: "290 €", label: "À partir de" }
-    ],
-    slug: "refonte-optimisation",
-    benefits: [
-      { title: "Efficacité", description: "Le site devient plus direct et aide le visiteur à comprendre votre valeur plus vite.", icon: "bolt" },
-      { title: "Précision", description: "Les messages sont clarifiés pour éviter les sections confuses ou répétitives.", icon: "target" },
-      { title: "Gain de temps", description: "Vous gardez ce qui fonctionne et corrigez les points qui bloquent la conversion.", icon: "clock" },
-      { title: "Meilleure organisation", description: "Les contenus sont réordonnés pour créer une lecture plus naturelle.", icon: "layers" },
-      { title: "Meilleure expérience client", description: "Le visiteur trouve plus facilement les informations qui le rassurent.", icon: "heart" },
-      { title: "Déploiement rapide", description: "Les ajustements peuvent être progressifs, sans repartir de zéro.", icon: "rocket" }
-    ],
-    methodology: [
-      { title: "Audit de l’existant", description: "J’analyse le message principal, les sections, les appels à l’action, le formulaire et la lisibilité mobile.", icon: "target" },
-      { title: "Priorisation des corrections", description: "On distingue ce qui bloque vraiment : message flou, page trop longue, offre mal expliquée ou contact peu visible.", icon: "layers" },
-      { title: "Réécriture et réorganisation", description: "Je retravaille les titres, textes, sections et boutons pour créer un parcours plus clair.", icon: "refresh" },
-      { title: "Validation et ajustements", description: "On compare avant/après et on garde une version plus simple, plus lisible et plus orientée demande.", icon: "rocket" }
-    ],
-    useCases: [
-      { title: "Site déjà en ligne mais peu clair", description: "Le contenu existe, mais l’offre n’est pas comprise assez vite par les visiteurs." },
-      { title: "Page trop chargée", description: "Les sections sont réduites, regroupées ou réordonnées pour créer une lecture plus fluide." },
-      { title: "Manque de demandes", description: "Le parcours vers le devis, le contact ou la réservation est rendu plus visible." }
-    ],
-    tools: ["Audit UX", "Réécriture", "Hiérarchie visuelle", "CTA", "Optimisation mobile"]
   }
 ];
